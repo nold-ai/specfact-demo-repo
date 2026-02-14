@@ -1,8 +1,9 @@
 # SpecFact Demo Repo
 
 > [!IMPORTANT]
-> This repository is a **demo simulator**, not the production SpecFact CLI.
-> The `./specfact` command in this repo runs local demo code in `specfact_demo/`.
+> This repo includes two paths:
+> 1) **Real CLI path** using installed `specfact-cli` (recommended for trust)
+> 2) **Local simulator path** using `./specfact` for deterministic fixtures
 
 This repository is a reproducible "aha moment" for SpecFact:
 
@@ -16,7 +17,19 @@ You can run the full flow in less than 5 minutes.
 See `CONTRIBUTING.md` for contributor workflows and issue labels.
 See `docs/real-cli-vs-demo.md` for a quick mapping between this demo and the real CLI.
 
-## Quickstart (3 commands)
+## Quickstart (Real CLI)
+
+```bash
+make real-smoke
+```
+
+This runs:
+
+- `specfact-cli --version`
+- `specfact-cli import from-code demo-repo --repo . --shadow-only --force`
+- `specfact-cli enforce stage --preset minimal`
+
+## Quickstart (Simulator fixtures)
 
 ```bash
 make repro
@@ -99,6 +112,7 @@ Checks:
 ### Demo helpers
 
 ```bash
+make real-smoke  # run real specfact-cli import + enforcement smoke
 make repro       # run intentionally broken fixtures, expect BLOCK
 make explain     # print blocking violations from artifacts/latest/enforce_report.json
 make repro-pass  # run fixed fixtures, expect PASS

@@ -6,8 +6,9 @@ ARTIFACTS_PASS ?= artifacts/pass
 OFFICIAL_PLUGIN ?= plugins/official/backlog_labeler/plugin.py
 CHANGE ?= demo-github-issue-sync-showcase
 GITHUB_REPO ?= nold-ai/specfact-demo-repo
+REAL_BUNDLE ?= demo-repo
 
-.PHONY: repro repro-pass explain diff-report demo sync-issue validate-sync opsx-dogfood enforce test plugin-init plugin-test clean clean-latest clean-pass
+.PHONY: repro repro-pass explain diff-report demo real-import real-enforce real-smoke sync-issue validate-sync opsx-dogfood enforce test plugin-init plugin-test clean clean-latest clean-pass
 
 repro: clean-latest
 	./specfact enforce --fixtures "$(FIXTURES)" --artifacts "$(ARTIFACTS)" --use-plugin "$(OFFICIAL_PLUGIN)"
@@ -31,6 +32,17 @@ demo: repro
 	@echo ""
 	@echo "=== BLOCK vs PASS metric diff ==="
 	@$(MAKE) --no-print-directory diff-report
+
+real-import:
+	specfact-cli import from-code "$(REAL_BUNDLE)" --repo . --shadow-only --force
+
+real-enforce:
+	specfact-cli enforce stage --preset minimal
+
+real-smoke:
+	specfact-cli --version
+	$(MAKE) --no-print-directory real-import
+	$(MAKE) --no-print-directory real-enforce
 
 sync-issue:
 	$(PYTHON) scripts/sync_change_to_github_issue.py --change "$(CHANGE)" --repo "$(GITHUB_REPO)"

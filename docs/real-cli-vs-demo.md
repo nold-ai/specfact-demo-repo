@@ -16,8 +16,12 @@ This repository is intentionally a local demo harness.
 
 ## Command expectations
 
-- Commands in this repo are demo commands and fixtures:
+- Real CLI smoke path in this repo:
+  - `make real-smoke`
+  - `specfact-cli import from-code demo-repo --repo . --shadow-only --force`
+  - `specfact-cli enforce stage --preset minimal`
+- Local simulator commands and fixtures:
   - `make demo`
   - `./specfact enforce ...`
   - `make opsx-dogfood ...`
-- They are designed for deterministic demo output, not production rollout.
+- Simulator commands are designed for deterministic output, not production rollout.
