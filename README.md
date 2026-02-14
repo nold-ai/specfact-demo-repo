@@ -1,163 +1,157 @@
 # SpecFact Demo Repo
 
-> [!IMPORTANT]
-> This repo now uses the **real `specfact-cli`** for demo commands.
-> Local demo wrapper binaries were removed.
+A one-repo proof of the core SpecFact promise:
 
-This repository is a reproducible "aha moment" for SpecFact CLI:
+> point the real `specfact-cli` at existing code, generate machine-readable specs,
+> and run enforceable checks that can block regressions.
 
-- real CLI import from existing codebases
-- real CLI enforcement mode configuration
-- real CLI GitHub backlog sync via bridge adapter
+This demo is intentionally small and reproducible.
 
-You can run the core smoke flow in under 1 minute.
-
-See `CONTRIBUTING.md` for contributor workflows and issue labels.
-See `docs/real-cli-vs-demo.md` for a quick mapping between this demo and the real CLI.
-See official docs for deeper workflows:
+See `docs/real-cli-vs-demo.md` for scope boundaries and official docs for deeper workflows:
 
 - https://docs.specfact.io/use-cases/
 - https://docs.specfact.io/getting-started/installation/
 - https://docs.specfact.io/guides/
 
-## What SpecFact Solves
+## 90-Second Proof
 
-SpecFact CLI is designed for spec-first delivery workflows, especially brownfield
-modernization and contract-driven enforcement:
-
-- import existing code into a structured project bundle
-- enforce quality gates and contract policies
-- sync backlog systems (GitHub/ADO/etc.) with SpecFact artifacts
-
-## Install and Prerequisites
-
-```bash
-pip install specfact-cli
-specfact-cli --version
-```
-
-Prerequisites for backlog sync:
-
-- GitHub authentication (`gh auth login` or `specfact-cli auth github`)
-- repository access to the target project
-
-## Quickstart (Real CLI Smoke)
+Run the real CLI smoke path:
 
 ```bash
 make real-smoke
 ```
 
-This runs:
+Equivalent direct commands:
 
-- `specfact-cli --version`
-- `specfact-cli import from-code demo-repo --repo . --shadow-only --force`
-- `specfact-cli enforce stage --preset minimal`
+```bash
+specfact-cli --version
+specfact-cli import from-code demo-repo --repo . --shadow-only --force
+specfact-cli enforce stage --preset minimal
+```
 
-Expected output example:
+Expected indicators:
 
 - `SpecFact CLI version ...`
 - `Import complete!`
 - `Enforcement mode set to minimal`
 
-See sample logs in `results/real-smoke.log` and `results/test.log`.
+Sample output logs:
 
-## Commands
+- `results/real-smoke.log`
+- `results/test.log`
 
-### Real CLI helpers
+## What Success Looks Like
+
+After a successful run, you should have:
+
+- a generated bundle under `.specfact/projects/demo-repo/`
+- enforcement preset configured via `enforce stage`
+- reproducible logs you can inspect or attach to a PR
+
+## Read Output Fast
+
+Use this quick interpretation guide for new users:
+
+- `Import complete!` means the codebase was parsed and bundled successfully.
+- `Enforcement mode set ...` means gate policy is configured for this bundle.
+- `BLOCK` in an enforcement/repro summary means at least one contract/policy violation failed the gate.
+- `ALLOW` means configured checks passed for the evaluated scope.
+
+## Demo Lanes
+
+### 1) Brownfield smoke lane
 
 ```bash
-make real-version
-make real-import
-make real-enforce
-make real-repro
-make sidecar-demo
 make real-smoke
 ```
 
-### Backlog sync (real CLI)
+This is the fastest onboarding path and should complete in about one minute on a typical laptop.
+
+### 2) Legacy sidecar validation lane
+
+```bash
+make sidecar-demo
+```
+
+This imports and validates the deliberately buggy sample in `examples/buggy-sidecar/`.
+
+Expected logs:
+
+- `results/sidecar-import.log`
+- `results/sidecar-repro.log`
+
+### 3) Backlog sync lane (GitHub adapter)
 
 ```bash
 make real-backlog-sync REPO_OWNER=nold-ai REPO_NAME=specfact-demo-repo BACKLOG_IDS=2
 ```
 
-This uses `specfact-cli sync bridge` with the GitHub adapter in bidirectional mode.
-It imports the selected backlog item(s) and syncs via the bundle.
-
-After sync, expect proposal/change artifacts under:
+This uses `specfact-cli sync bridge` in bidirectional mode and writes tracking artifacts under:
 
 - `openspec/changes/`
 - `.specfact/projects/<bundle>/change_tracking/`
 
 Prerequisite: authenticated GitHub access (`gh auth login` or `specfact-cli auth github`).
 
-### Sidecar validation on legacy code (real CLI)
+## Install and Prerequisites
+
+Install the real CLI:
 
 ```bash
-make sidecar-demo
+pip install specfact-cli
+specfact-cli --version
 ```
 
-This runs:
+For backlog sync demos, ensure:
 
-- `specfact-cli import from-code buggy-sidecar --repo examples/buggy-sidecar --shadow-only --force`
-- `specfact-cli repro --repo examples/buggy-sidecar --sidecar --sidecar-bundle buggy-sidecar`
+- GitHub authentication is active
+- you can read/write issues in the target repository
 
-Expected output example:
+## Core Commands
 
-- `Import complete!`
-- sidecar validation run summary for `buggy-sidecar`
+```bash
+make real-version
+make real-import
+make real-enforce
+make real-repro
+make real-backlog-sync REPO_OWNER=<owner> REPO_NAME=<repo> BACKLOG_IDS=<id-list>
+make sidecar-demo
+make real-smoke
+make test
+```
 
-See sample logs:
-
-- `results/sidecar-import.log`
-- `results/sidecar-repro.log`
-
-## Visual demo
+## Visual Demo
 
 Rendered terminal snapshot:
 
 - `docs/assets/demo-output.svg`
 
-Capture/generation instructions:
+Capture instructions:
 
 - `docs/assets/README.md`
 
-## Ways you can contribute
+## Ways You Can Contribute
 
-- Improve real CLI demo scenarios and command ergonomics
-- Improve backlog sync examples for GitHub/ADO adapters
+- Improve demo scenarios and command ergonomics
+- Improve backlog sync examples for real-world repos
 - Add contributor-safe fixtures that demonstrate sync conflict handling
-- Improve CI reliability and speed for demo verification
+- Improve CI reliability and run time for demo verification
 
-Recommended issue labels:
+Recommended labels:
 
 - `good first issue`
 - `help wanted`
 - `demo-scenario`
 - `docs`
 
-## Repo layout
+## Repo Layout
 
 ```text
+examples/                    # runnable demo examples
 openspec/                    # OpenSpec change artifacts for dogfooding examples
-docs/                        # governance and demo docs
-tests/                       # local tests for demo harness modules
 repro/                       # reproducibility runners
 evidence/                    # evidence manifest and threat model
 results/                     # sample run outputs
-examples/                    # runnable demo examples (including legacy sidecar case)
-```
-
-## Marketplace governance model
-
-See `docs/marketplace-governance.md` for:
-
-- Tier 1: Official
-- Tier 2: Verified
-- Tier 3: Experimental
-
-## Development helpers
-
-```bash
-make test
-make clean
+docs/                        # supporting demo docs
+tests/                       # local tests for demo harness modules
 ```

@@ -1,26 +1,26 @@
 # Real CLI vs Demo Repo
 
-This repository is intentionally a local demo harness.
+This repository is a small demo harness that runs the real `specfact-cli`.
 
 ## What this repo is
 
-- A reproducible showcase for enforcement, artifact generation, and backlog-sync behavior.
-- A safe place for contributors to add scenarios, scripts, and docs.
-- A real-CLI-first workflow using `specfact-cli`.
+- A reproducible showcase for import, enforcement, sidecar validation, and backlog sync.
+- A safe place to iterate on demo scenarios, docs, and onboarding scripts.
+- A real-CLI-first workflow using `specfact-cli` commands.
 
 ## What this repo is not
 
-- Not the production `specfact-cli` distribution.
-- Not a source-of-truth implementation of all real SpecFact commands.
-- Not a replacement for official docs/releases.
+- Not the production `specfact-cli` codebase.
+- Not the source of truth for complete CLI behavior.
+- Not a replacement for official docs and releases.
 
 ## Command expectations
 
-- Real CLI smoke path in this repo:
+- Smoke lane:
   - `make real-smoke`
-  - `specfact-cli import from-code demo-repo --repo . --shadow-only --force`
-  - `specfact-cli enforce stage --preset minimal`
-- Real CLI backlog sync path in this repo:
+- Sidecar lane:
+  - `make sidecar-demo`
+- Backlog sync lane:
   - `make real-backlog-sync REPO_OWNER=<owner> REPO_NAME=<repo> BACKLOG_IDS=<id-list>`
-- Internal `specfact_demo/` Python modules remain for test fixtures only; they are not
-  the public CLI path.
+
+Internal `specfact_demo/` Python modules are retained as local test fixtures only and are not the supported user path.
