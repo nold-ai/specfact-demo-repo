@@ -1,0 +1,13 @@
+{
+  "name": "payment_receipt",
+  "version": "2.0.0",
+  "api_version": "2.0",
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/payments/receipt",
+      "request_schema": "schemas/payment_receipt_request.json",
+      "response_schema": "schemas/payment_receipt_response.json"
+    }
+  ]
+}
