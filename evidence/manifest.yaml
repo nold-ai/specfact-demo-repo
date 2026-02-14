@@ -5,6 +5,7 @@ invariants:
   - real_cli_import_from_code
   - enforcement_mode_configuration
   - backlog_sync_bridge_capability
+  - sidecar_validation_for_legacy_code
 evidence:
   - type: empirical-run
     path: results/real-smoke.log
@@ -12,6 +13,10 @@ evidence:
     path: results/test.log
   - type: openspec-validation
     path: results/openspec-validate.log
+  - type: sidecar-import
+    path: results/sidecar-import.log
+  - type: sidecar-validation
+    path: results/sidecar-repro.log
 scope:
   repository: nold-ai/specfact-demo-repo
   mode: demonstration

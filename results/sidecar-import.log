@@ -1,0 +1,93 @@
+specfact-cli import from-code "buggy-sidecar" --repo "examples/buggy-sidecar" --shadow-only --force
+SpecFact CLI - v0.30.1
+
+⏱️  Started: 2026-02-14 23:40:46
+⚠ Force mode enabled - regenerating all artifacts
+
+Importing repository: examples/buggy-sidecar
+Project bundle: buggy-sidecar
+Confidence threshold: 0.5
+→ Shadow mode - observe without enforcement
+Mode: CI/CD (AST-based import)
+
+⏱️  Note: This analysis typically takes 2-5 minutes for large codebases 
+(optimized for speed)
+
+Analysis Plugins:
+ Plugin                 Status    Details                                       
+ AST Analysis           ✓         Core analysis engine                          
+                        Enabled                                                 
+ Semgrep Pattern        ⊘         Semgrep CLI not installed (install: pip       
+ Detection              Disabled  install semgrep)                              
+ Dependency Graph       ✓         Dependency graph analysis enabled             
+ Analysis               Enabled                                                 
+
+🔍 Analyzing codebase...
+
+
+✓ Found 0 features
+✓ Detected themes: Core
+✓ Total stories: 0
+
+💾 Saving features (checkpoint)...
+✓ Bundle saved: 3 artifact(s) (0.01s)
+✓ Features saved (can resume if interrupted)
+
+
+🔗 Linking source files to features...
+✓ Source tracking complete
+
+🔍 Enhanced analysis: Extracting relationships, contracts, and graph 
+dependencies...
+
+Analyzing 1 file(s) for relationships...
+✓ Relationship analysis complete: 1 files mapped
+✓ Dependency graph complete: 1 modules, 0 dependencies
+No features with implementation files found for contract extraction
+No API contracts detected in codebase
+
+📊 Building enrichment context...
+⠋ Writing to file...
+✓ Enrichment context saved to: 
+.specfact/projects/buggy-sidecar/enrichment_context.md
+
+💾 Compiling and saving project bundle...
+✓ Bundle saved: 3 artifact(s) (0.01s)
+
+✓ Import complete!
+Project bundle written to: 
+/home/dom/git/nold-ai/specfact-demo-repo/examples/buggy-sidecar/.specfact/projec
+ts/buggy-sidecar
+
+📋 Next Steps:
+Here are some commands you might want to run next:
+
+  → Review changes:
+     specfact plan review buggy-sidecar
+     Review updates to your plan bundle
+
+  → Check deviations:
+     specfact plan compare --bundle buggy-sidecar
+     See what changed since last import
+
+
+💡 Tip: Run 'specfact sdd constitution bootstrap --repo .' to generate 
+constitution
+
+🔧 Enriching plan for tool compliance...
+Enhancing vague acceptance criteria, incomplete requirements, generic tasks...
+
+✓ Plan bundle is already well-specified (no enrichments needed)
+✓ Tool enrichment complete
+Report written to: 
+/home/dom/git/nold-ai/specfact-demo-repo/examples/buggy-sidecar/.specfact/projec
+ts/buggy-sidecar/reports/brownfield/analysis-2026-02-14T23-40-47.md
+
+Performance Report: import.from_code
+Total duration: 14.02s
+Total operations: 7
+
+Slow operations (> 5.0s):
+  • validate_api_specs: 10.09s
+
+✓ Finished: 2026-02-14 23:41:01 | Duration: 14.68s

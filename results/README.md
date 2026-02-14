@@ -7,9 +7,13 @@ Expected files:
 - `real-smoke.log`
 - `test.log`
 - `openspec-validate.log`
+- `sidecar-import.log`
+- `sidecar-repro.log`
 
 Regenerate:
 
 ```bash
 ./repro/run.sh
+make sidecar-import | tee results/sidecar-import.log
+make sidecar-repro | tee results/sidecar-repro.log
 ```
