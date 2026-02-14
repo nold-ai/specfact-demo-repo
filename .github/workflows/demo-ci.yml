@@ -1,0 +1,41 @@
+name: demo-ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "feature/**"
+
+jobs:
+  verify-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prepare artifact directory
+        run: mkdir -p artifacts
+
+      - name: Run demo flow
+        run: make demo | tee artifacts/demo-ci.log
+
+      - name: Run tests
+        run: make test | tee artifacts/test-ci.log
+
+      - name: Upload demo artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-artifacts
+          path: |
+            artifacts/latest/**
+            artifacts/pass/**
+            artifacts/demo-ci.log
+            artifacts/test-ci.log
