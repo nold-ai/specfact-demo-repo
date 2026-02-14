@@ -1,0 +1,8 @@
+{
+  "story_id": "STORY-102",
+  "verified": true,
+  "evidence_files": [
+    "tests/integration/test_ledger_export.py",
+    "coverage/ledger_export.xml"
+  ]
+}

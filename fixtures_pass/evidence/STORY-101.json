@@ -1,0 +1,8 @@
+{
+  "story_id": "STORY-101",
+  "verified": true,
+  "evidence_files": [
+    "tests/integration/test_profile_sync.py",
+    "coverage/customer_profile_sync.xml"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "story_id": "STORY-103",
+  "verified": true,
+  "evidence_files": [
+    "tests/integration/test_payment_receipt.py",
+    "coverage/payment_receipt.xml"
+  ]
+}
