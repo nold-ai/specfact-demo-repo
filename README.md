@@ -4,9 +4,9 @@
 > This repo now uses the **real `specfact-cli`** for demo commands.
 > Local demo wrapper binaries were removed.
 
-This repository is a reproducible "aha moment" for SpecFact:
+This repository is a reproducible "aha moment" for SpecFact CLI:
 
-- real CLI import from existing code
+- real CLI import from existing codebases
 - real CLI enforcement mode configuration
 - real CLI GitHub backlog sync via bridge adapter
 
@@ -15,7 +15,28 @@ You can run the core smoke flow in under 1 minute.
 See `CONTRIBUTING.md` for contributor workflows and issue labels.
 See `docs/real-cli-vs-demo.md` for a quick mapping between this demo and the real CLI.
 
-## Quickstart (Real CLI)
+## What SpecFact Solves
+
+SpecFact CLI is designed for spec-first delivery workflows, especially brownfield
+modernization and contract-driven enforcement:
+
+- import existing code into a structured project bundle
+- enforce quality gates and contract policies
+- sync backlog systems (GitHub/ADO/etc.) with SpecFact artifacts
+
+## Install and Prerequisites
+
+```bash
+pip install specfact-cli
+specfact-cli --version
+```
+
+Prerequisites for backlog sync:
+
+- GitHub authentication (`gh auth login` or `specfact-cli auth github`)
+- repository access to the target project
+
+## Quickstart (Real CLI Smoke)
 
 ```bash
 make real-smoke
@@ -26,6 +47,14 @@ This runs:
 - `specfact-cli --version`
 - `specfact-cli import from-code demo-repo --repo . --shadow-only --force`
 - `specfact-cli enforce stage --preset minimal`
+
+Expected output example:
+
+- `SpecFact CLI version ...`
+- `Import complete!`
+- `Enforcement mode set to minimal`
+
+See sample logs in `results/real-smoke.log` and `results/test.log`.
 
 ## Commands
 
@@ -48,15 +77,20 @@ make real-backlog-sync REPO_OWNER=nold-ai REPO_NAME=specfact-demo-repo BACKLOG_I
 This uses `specfact-cli sync bridge` with the GitHub adapter in bidirectional mode.
 It imports the selected backlog item(s) and syncs via the bundle.
 
+After sync, expect proposal/change artifacts under:
+
+- `openspec/changes/`
+- `.specfact/projects/<bundle>/change_tracking/`
+
 Prerequisite: authenticated GitHub access (`gh auth login` or `specfact-cli auth github`).
 
 ## Visual demo
 
-Add a short terminal GIF at:
+Rendered terminal snapshot:
 
-- `docs/assets/demo-output.gif`
+- `docs/assets/demo-output.svg`
 
-Generation instructions:
+Capture/generation instructions:
 
 - `docs/assets/README.md`
 
@@ -80,6 +114,9 @@ Recommended issue labels:
 openspec/                    # OpenSpec change artifacts for dogfooding examples
 docs/                        # governance, roadmap, and demo docs
 tests/                       # local tests for demo harness modules
+repro/                       # reproducibility runners
+evidence/                    # evidence manifest and threat model
+results/                     # sample run outputs
 ```
 
 ## Marketplace governance model

@@ -35,7 +35,6 @@ jobs:
         with:
           name: demo-artifacts
           path: |
-            artifacts/latest/**
-            artifacts/pass/**
             artifacts/demo-ci.log
             artifacts/test-ci.log
+            .specfact/projects/demo-repo/**
