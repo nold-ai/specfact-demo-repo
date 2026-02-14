@@ -112,7 +112,7 @@ Recommended issue labels:
 
 ```text
 openspec/                    # OpenSpec change artifacts for dogfooding examples
-docs/                        # governance, roadmap, and demo docs
+docs/                        # governance and demo docs
 tests/                       # local tests for demo harness modules
 repro/                       # reproducibility runners
 evidence/                    # evidence manifest and threat model
@@ -126,8 +126,6 @@ See `docs/marketplace-governance.md` for:
 - Tier 1: Official
 - Tier 2: Verified
 - Tier 3: Experimental
-
-See `docs/wanted-plugins.md` for immediate extension gaps.
 
 ## Development helpers
 
