@@ -3,6 +3,8 @@
 Thanks for contributing. This repo is intentionally small and reproducible, so changes should
 keep demo flows deterministic and fast.
 
+Important: this repo is a demo harness, not the production `specfact-cli` codebase.
+
 ## Quick Start
 
 ```bash

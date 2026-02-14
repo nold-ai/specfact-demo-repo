@@ -1,5 +1,9 @@
 # SpecFact Demo Repo
 
+> [!IMPORTANT]
+> This repository is a **demo simulator**, not the production SpecFact CLI.
+> The `./specfact` command in this repo runs local demo code in `specfact_demo/`.
+
 This repository is a reproducible "aha moment" for SpecFact:
 
 - one command to enforce spec-first invariants
@@ -10,6 +14,7 @@ This repository is a reproducible "aha moment" for SpecFact:
 You can run the full flow in less than 5 minutes.
 
 See `CONTRIBUTING.md` for contributor workflows and issue labels.
+See `docs/real-cli-vs-demo.md` for a quick mapping between this demo and the real CLI.
 
 ## Quickstart (3 commands)
 
