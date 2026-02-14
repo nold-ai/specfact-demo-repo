@@ -1,6 +1,7 @@
 # Marketplace Governance
 
-This demo aligns marketplace policy with Spec-First and No-Escape invariants.
+This demo documents a future marketplace extension policy aligned with
+Spec-First and No-Escape invariants.
 
 ## Tier 1: Official
 
@@ -12,7 +13,7 @@ This demo aligns marketplace policy with Spec-First and No-Escape invariants.
 
 - Community maintained
 - Must pass reproducibility checks
-- Must pass plugin harness checks
+- Must pass extension validation checks
 - Must declare scope, invariants_touched, and side_effects
 
 ## Tier 3: Experimental

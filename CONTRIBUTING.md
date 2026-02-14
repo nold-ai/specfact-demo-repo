@@ -18,8 +18,6 @@ make test
   add new fixture variants that show realistic policy failures or recoveries.
 - Improve developer UX:
   simplify output readability and command ergonomics in `Makefile` and `README.md`.
-- Expand plugin examples:
-  add safe lifecycle plugins under `plugins/official/`.
 - Improve OpenSpec dogfooding:
   refine backlog sync flow using `specfact-cli sync bridge`.
 - Improve CI reliability:
