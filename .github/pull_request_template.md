@@ -4,7 +4,7 @@ Describe what changed and why.
 
 ## Validation
 
-- [ ] `make demo`
+- [ ] `make real-smoke`
 - [ ] `make test`
 - [ ] If OpenSpec changed: `openspec validate <change-id> --strict`
 

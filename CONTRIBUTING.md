@@ -3,10 +3,12 @@
 Thanks for contributing. This repo is intentionally small and reproducible, so changes should
 keep demo flows deterministic and fast.
 
+Important: this repo is a demo harness, not the production `specfact-cli` codebase.
+
 ## Quick Start
 
 ```bash
-make demo
+make real-smoke
 make test
 ```
 
@@ -19,9 +21,9 @@ make test
 - Expand plugin examples:
   add safe lifecycle plugins under `plugins/official/`.
 - Improve OpenSpec dogfooding:
-  refine issue-sync flow and source-tracking validation in `scripts/`.
+  refine backlog sync flow using `specfact-cli sync bridge`.
 - Improve CI reliability:
-  make demo verification faster and clearer in GitHub Actions.
+  make real-CLI verification faster and clearer in GitHub Actions.
 
 ## Good First Issue Labels
 
@@ -35,14 +37,14 @@ Use these labels when opening or triaging issues:
 ## Contribution Expectations
 
 - Keep changes scoped and avoid unrelated refactors.
-- Preserve or improve reproducibility of `make demo`.
+- Preserve or improve reproducibility of `make real-smoke`.
 - Add/update tests when behavior changes.
 - Update README when user-facing commands or outputs change.
 
 ## Pull Request Checklist
 
 - Run:
-  `make demo`
+  `make real-smoke`
 - Run:
   `make test`
 - If OpenSpec artifacts changed, run:

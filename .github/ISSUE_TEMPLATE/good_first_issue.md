@@ -17,7 +17,7 @@ Describe a scoped task that can be completed in one PR.
 ## Acceptance criteria
 
 - [ ] Clear command or file-level outcome is defined
-- [ ] `make demo` behavior remains reproducible
+- [ ] `make real-smoke` behavior remains reproducible
 - [ ] Docs are updated if user-facing behavior changes
 
 ## Suggested files

@@ -11,8 +11,8 @@
 ### Checks Executed
 
 1. `openspec validate demo-github-issue-sync-showcase --strict`
-2. `make sync-issue CHANGE=demo-github-issue-sync-showcase GITHUB_REPO=nold-ai/specfact-demo-repo`
-3. `make validate-sync CHANGE=demo-github-issue-sync-showcase GITHUB_REPO=nold-ai/specfact-demo-repo`
+2. `make real-smoke`
+3. `make real-backlog-sync REPO_OWNER=nold-ai REPO_NAME=specfact-demo-repo BACKLOG_IDS=2`
 
 ### Evidence
 
