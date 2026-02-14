@@ -10,9 +10,7 @@ High-demand extension gaps for marketplace contributors.
 
 ## Contribution path
 
-1. Scaffold:
-   `./specfact plugin init my-plugin`
-2. Implement lifecycle logic in `plugin.py`
-3. Test:
-   `./specfact plugin test plugins/my-plugin/plugin.py --fixture fixtures`
-4. Open pull request with manifest metadata
+1. Open an issue with label `help wanted` or `demo-scenario`.
+2. Propose the target adapter/use case and expected sync behavior.
+3. Add reproducible real-CLI commands for the scenario (import/enforce/sync).
+4. Open pull request with docs and validation evidence.

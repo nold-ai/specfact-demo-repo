@@ -24,7 +24,7 @@ jobs:
         run: mkdir -p artifacts
 
       - name: Run demo flow
-        run: make demo | tee artifacts/demo-ci.log
+        run: make real-smoke | tee artifacts/demo-ci.log
 
       - name: Run tests
         run: make test | tee artifacts/test-ci.log

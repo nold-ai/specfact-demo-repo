@@ -28,4 +28,4 @@ Describe the expected behavior.
 
 ## Logs / Screenshots
 
-Paste relevant output from `make demo`, `make test`, or CI logs.
+Paste relevant output from `make real-smoke`, `make test`, or CI logs.

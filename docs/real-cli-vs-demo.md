@@ -6,7 +6,7 @@ This repository is intentionally a local demo harness.
 
 - A reproducible showcase for enforcement, artifact generation, and backlog-sync behavior.
 - A safe place for contributors to add scenarios, scripts, and docs.
-- A local CLI wrapper (`./specfact`) around `specfact_demo/` Python modules.
+- A real-CLI-first workflow using `specfact-cli`.
 
 ## What this repo is not
 
@@ -20,8 +20,7 @@ This repository is intentionally a local demo harness.
   - `make real-smoke`
   - `specfact-cli import from-code demo-repo --repo . --shadow-only --force`
   - `specfact-cli enforce stage --preset minimal`
-- Local simulator commands and fixtures:
-  - `make demo`
-  - `./specfact enforce ...`
-  - `make opsx-dogfood ...`
-- Simulator commands are designed for deterministic output, not production rollout.
+- Real CLI backlog sync path in this repo:
+  - `make real-backlog-sync REPO_OWNER=<owner> REPO_NAME=<repo> BACKLOG_IDS=<id-list>`
+- Internal `specfact_demo/` Python modules remain for test fixtures only; they are not
+  the public CLI path.
