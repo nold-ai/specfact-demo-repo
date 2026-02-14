@@ -9,6 +9,8 @@ This repository is a reproducible "aha moment" for SpecFact:
 
 You can run the full flow in less than 5 minutes.
 
+See `CONTRIBUTING.md` for contributor workflows and issue labels.
+
 ## Quickstart (3 commands)
 
 ```bash
@@ -122,6 +124,31 @@ Source tracking is written to:
 
 - `openspec/changes/demo-github-issue-sync-showcase/source_tracking.json`
 - `openspec/changes/demo-github-issue-sync-showcase/proposal.md` (`## Source Tracking`)
+
+## Visual demo
+
+Add a short terminal GIF at:
+
+- `docs/assets/demo-output.gif`
+
+Generation instructions:
+
+- `docs/assets/README.md`
+
+## Ways you can contribute
+
+- Improve demo scenarios (additional realistic BLOCK and PASS cases)
+- Improve output readability (`make explain`, `make diff-report`)
+- Add plugin showcase scenarios under `plugins/official/`
+- Improve OpenSpec issue-sync validation and source tracking
+- Improve CI reliability and speed for demo verification
+
+Recommended issue labels:
+
+- `good first issue`
+- `help wanted`
+- `demo-scenario`
+- `docs`
 
 ## Repo layout
 
