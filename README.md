@@ -14,6 +14,11 @@ You can run the core smoke flow in under 1 minute.
 
 See `CONTRIBUTING.md` for contributor workflows and issue labels.
 See `docs/real-cli-vs-demo.md` for a quick mapping between this demo and the real CLI.
+See official docs for deeper workflows:
+
+- https://docs.specfact.io/use-cases/
+- https://docs.specfact.io/getting-started/installation/
+- https://docs.specfact.io/guides/
 
 ## What SpecFact Solves
 
@@ -65,6 +70,7 @@ make real-version
 make real-import
 make real-enforce
 make real-repro
+make sidecar-demo
 make real-smoke
 ```
 
@@ -83,6 +89,27 @@ After sync, expect proposal/change artifacts under:
 - `.specfact/projects/<bundle>/change_tracking/`
 
 Prerequisite: authenticated GitHub access (`gh auth login` or `specfact-cli auth github`).
+
+### Sidecar validation on legacy code (real CLI)
+
+```bash
+make sidecar-demo
+```
+
+This runs:
+
+- `specfact-cli import from-code buggy-sidecar --repo examples/buggy-sidecar --shadow-only --force`
+- `specfact-cli repro --repo examples/buggy-sidecar --sidecar --sidecar-bundle buggy-sidecar`
+
+Expected output example:
+
+- `Import complete!`
+- sidecar validation run summary for `buggy-sidecar`
+
+See sample logs:
+
+- `results/sidecar-import.log`
+- `results/sidecar-repro.log`
 
 ## Visual demo
 
@@ -117,6 +144,7 @@ tests/                       # local tests for demo harness modules
 repro/                       # reproducibility runners
 evidence/                    # evidence manifest and threat model
 results/                     # sample run outputs
+examples/                    # runnable demo examples (including legacy sidecar case)
 ```
 
 ## Marketplace governance model

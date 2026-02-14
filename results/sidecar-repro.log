@@ -1,0 +1,43 @@
+specfact-cli repro --repo "examples/buggy-sidecar" --sidecar --sidecar-bundle "buggy-sidecar"
+SpecFact CLI - v0.30.1
+
+⏱️  Started: 2026-02-14 23:40:46
+Running validation suite...
+Repository: examples/buggy-sidecar
+Time budget: 120s
+
+No environment manager detected, using direct tool invocation
+⠼ Running validation checks... 0:00:00
+
+Validation Results
+
+                              Check Summary                               
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ Check                            ┃ Tool         ┃ Status    ┃ Duration ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ Linting (ruff)                   │ ruff         │ ✓ PASSED  │ 0.02s    │
+│ Type checking (basedpyright)     │ basedpyright │ ⊘ SKIPPED │ N/A      │
+│ Contract exploration (CrossHair) │ crosshair    │ ✗ FAILED  │ 0.32s    │
+└──────────────────────────────────┴──────────────┴───────────┴──────────┘
+
+Summary:
+  Total checks: 3
+  Passed: 1
+  Failed: 1
+  Skipped: 1
+  Total duration: 0.39s
+
+Report written to: 
+examples/buggy-sidecar/.specfact/reports/enforcement/report-2026-02-14T23-40-47.
+yaml
+
+Running sidecar validation for unannotated code...
+Found 11280 unannotated functions
+⚠ Skipping Specmatic: No service configuration detected (use --run-specmatic to 
+override)
+✓ Validation complete
+
+! Required validations passed, but CrossHair failed (advisory)
+Reproducibility verified with advisory failures
+
+✓ Finished: 2026-02-14 23:40:59 | Duration: 12.07s
