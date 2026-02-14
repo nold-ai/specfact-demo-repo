@@ -1,0 +1,13 @@
+{
+  "name": "ledger_export",
+  "version": "1.0.3",
+  "api_version": "1.0",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/ledger/export",
+      "request_schema": "schemas/ledger_export_request.json",
+      "response_schema": "schemas/ledger_export_response.json"
+    }
+  ]
+}

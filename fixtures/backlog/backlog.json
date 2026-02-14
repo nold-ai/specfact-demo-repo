@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "story_id": "STORY-101",
+      "title": "Implement customer profile sync",
+      "status": "ready"
+    },
+    {
+      "story_id": "STORY-102",
+      "title": "Implement ledger export",
+      "status": "ready"
+    },
+    {
+      "story_id": "STORY-103",
+      "title": "Implement payment receipt notifications",
+      "status": "in_progress"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+name: backlog-labeler
+version: 0.1.0
+api_version: "1.0"
+tier: official
+scope:
+  - sync-adapter
+invariants_touched:
+  - backlog_sync
+side_effects:
+  - annotate_blocked_items
+attestation_hash: sha256:official-demo-backlog-labeler
