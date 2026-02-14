@@ -1,0 +1,22 @@
+{
+  "stories": [
+    {
+      "id": "STORY-101",
+      "title": "Sync customer profiles",
+      "definition_of_ready": true,
+      "contract": "contracts/customer_profile_contract.json"
+    },
+    {
+      "id": "STORY-102",
+      "title": "Create ledger export",
+      "definition_of_ready": true,
+      "contract": "contracts/ledger_export_contract.json"
+    },
+    {
+      "id": "STORY-103",
+      "title": "Send payment receipts",
+      "definition_of_ready": true,
+      "contract": "contracts/payment_receipt_contract.json"
+    }
+  ]
+}

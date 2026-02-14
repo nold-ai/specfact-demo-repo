@@ -1,0 +1,9 @@
+{
+  "change_id": "demo-github-issue-sync-showcase",
+  "repo": "nold-ai/specfact-demo-repo",
+  "issue_number": 2,
+  "issue_url": "https://github.com/nold-ai/specfact-demo-repo/issues/2",
+  "proposal_path": "openspec/changes/demo-github-issue-sync-showcase/proposal.md",
+  "tasks_path": "openspec/changes/demo-github-issue-sync-showcase/tasks.md",
+  "synced_at_utc": "2026-02-14T21:30:08Z"
+}

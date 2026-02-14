@@ -1,6 +1,6 @@
 # SpecFact Demo Repo
 
-This repository is a reproducible "OpenClaw moment" for SpecFact:
+This repository is a reproducible "aha moment" for SpecFact:
 
 - one command to enforce spec-first invariants
 - visible blocking of violations
@@ -13,6 +13,8 @@ You can run the full flow in less than 5 minutes.
 
 ```bash
 make repro
+make explain
+make repro-pass
 ```
 
 Expected output includes:
@@ -21,6 +23,7 @@ Expected output includes:
 - `Coverage delta: ...`
 - `Backlog sync result: ...`
 - `Evidence manifest: artifacts/latest/evidence_manifest.json`
+- `Gate decision: PASS` for the fixed fixture run
 
 ## Demo story
 
@@ -31,6 +34,16 @@ The fixture repo intentionally includes three blocking issues:
 3. Missing evidence pack for one story
 
 The enforcement flow blocks affected work and writes machine-readable artifacts.
+
+Then a second fixture set (`fixtures_pass/`) resolves those same issues so you can
+show a clean PASS path in the same session.
+
+## 60-second demo talk track
+
+1. "I run `make repro`; SpecFact reads stories/contracts/evidence and blocks unsafe work."
+2. "I run `make explain`; it maps each blocking code to the affected story."
+3. "I run `make repro-pass`; same rules, fixed fixtures, and the gate passes."
+4. "Everything is in machine-readable artifacts, so this can drive CI and backlog sync."
 
 ## Commands
 
@@ -76,11 +89,46 @@ Checks:
 - allowed scope constraints from policy
 - no explicit enforcement bypass flags
 
+### Demo helpers
+
+```bash
+make repro       # run intentionally broken fixtures, expect BLOCK
+make explain     # print blocking violations from artifacts/latest/enforce_report.json
+make repro-pass  # run fixed fixtures, expect PASS
+make diff-report # compare BLOCK vs PASS metrics side-by-side
+make demo        # orchestrates repro -> explain -> repro-pass
+```
+
+### OpenSpec + GitHub dogfooding demo
+
+```bash
+make opsx-dogfood CHANGE=demo-github-issue-sync-showcase
+```
+
+This flow does three things:
+
+1. Runs strict OpenSpec validation for the change.
+2. Creates a real GitHub issue in `nold-ai/specfact-demo-repo` from the change proposal.
+3. Validates issue linkage markers and local source tracking metadata.
+
+Related commands:
+
+```bash
+make sync-issue CHANGE=demo-github-issue-sync-showcase
+make validate-sync CHANGE=demo-github-issue-sync-showcase
+```
+
+Source tracking is written to:
+
+- `openspec/changes/demo-github-issue-sync-showcase/source_tracking.json`
+- `openspec/changes/demo-github-issue-sync-showcase/proposal.md` (`## Source Tracking`)
+
 ## Repo layout
 
 ```text
 specfact_demo/               # demo CLI + enforcement engine + plugin SDK
 fixtures/                    # deterministic broken sample repo
+fixtures_pass/               # deterministic fixed sample repo
 plugins/official/            # official example plugins
 docs/                        # governance, roadmap, wanted plugins
 tests/                       # unit tests for enforce + plugin harness
